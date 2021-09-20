@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="WpfBIndingTraining.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfBIndingTraining"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BindingTrainingMainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <!--<Window.Resources>
+        <local:Person
+            x:Key="Person"
+            Name="tanaka"
+            Age="34" />
+    </Window.Resources>
+    <Grid>
+        <TextBlock Text="{Binding Name, Source={StaticResource Person}}" />
+    </Grid>-->
+    <Window.DataContext>
+        <local:Person Name="tanaka" Age="-34" />
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <TextBlock Name="textbox" Text="{Binding Name}" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="TextBoxからフォーカス外す用" />
+            <TextBlock Text="{Binding Text, ElementName=textbox}" />
+            <TextBlock HorizontalAlignment="Left" Text="{Binding HorizontalAlignment, RelativeSource={RelativeSource Self}}" />
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Margin="2.5" Text="{Binding Name}" />
+                <TextBox Margin="2.5" Text="{Binding Age}" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
